@@ -4,22 +4,36 @@ using UnityEngine;
 
 public class Deercula : MonoBehaviour
 {
-    public float speed = 100;
-    public Rigidbody2D rb;
+    [SerializeField]
+    private int initialHealth;
+    private int health;
+    Rigidbody2D body;
+
+    float horizontal;
+    float vertical;
+
+    public float runSpeed = 20.0f;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        
+        body = GetComponent<Rigidbody2D>();
+        health = initialHealth;
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
+    }
 
-        Vector3 tempVect = new Vector3(h, v, 0);
-        tempVect = tempVect.normalized * speed * Time.deltaTime;
-        rb.MovePosition(rb.transform.position + tempVect);
+    private void FixedUpdate()
+    {
+        body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+    }
+
+    public void TakeDamage()
+    {
+        initialHealth -= 1;
+        Debug.Log("Damage taken");
     }
 }
