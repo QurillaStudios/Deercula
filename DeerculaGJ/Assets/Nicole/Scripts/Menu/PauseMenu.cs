@@ -5,21 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject pauseMenu;
-
-    // Update is called once per frame
-    void Update()
+    public void ContinueButton(GameObject panel)
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            pauseMenu.SetActive(true);
-            Time.timeScale = 0f;
-        }
-    }
-
-    public void ContinueButton()
-    {
-        pauseMenu.SetActive(false);
+        panel.SetActive(false);
         Time.timeScale = 1.0f;
     }
 
