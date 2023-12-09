@@ -9,15 +9,15 @@ public class TestWalker : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("START");
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        agent.destination =new Vector2(100, 100);
-        agent.isStopped= false;
+
     }
 
     void Update()
     {
-        
+        agent.SetDestination(new Vector2(-10, -10));
     }
 }

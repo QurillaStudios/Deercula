@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.XR;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UIElements;
 
 public class Animal : MonoBehaviour
@@ -21,17 +22,29 @@ public class Animal : MonoBehaviour
     [SerializeField] protected float timer = 3f;
     protected float currentTimer;
     protected  Rigidbody2D rb;
+    protected NavMeshAgent agent;
+
+    private Vector2 currentDestination;
+
+    protected GameObject player;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        agent.speed= speed;
         currentTimer = timer;
         startPosition = transform.position;
+
+        player = GameObject.FindGameObjectWithTag("Deercula");
     }
 
     private void FixedUpdate()
     {
-        Movement();
+        //Movement();
+        RandomMovement();
     }
 
     public virtual void TakeDamage()
@@ -43,8 +56,8 @@ public class Animal : MonoBehaviour
         }
         else
         {
-            StartCoroutine(Fleeing());
         }
+            StartCoroutine(Fleeing());
     }
 
     IEnumerator Fleeing()
@@ -83,4 +96,27 @@ public class Animal : MonoBehaviour
         rb.velocity = moveDirection * newSpeed;
     }
 
+    protected virtual void RandomMovement()
+    {
+        currentTimer -= Time.deltaTime;
+
+        if (Vector2.Distance(currentDestination, transform.position) < 0.6f || currentTimer <= 0)
+        {
+            currentDestination = new Vector2(startPosition.x + Random.Range(-5f, 6f), startPosition.y + Random.Range(-5f, 6f));
+            currentTimer = timer;
+        }
+        
+        agent.SetDestination(currentDestination);
+
+        float newSpeed = speed;
+        if (isFleeing)
+        {
+            newSpeed = speed * speedMultiplier;
+        }
+        else
+        {
+            newSpeed = speed;
+        }
+        agent.speed= newSpeed;
+    }
 }

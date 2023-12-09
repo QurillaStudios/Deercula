@@ -21,4 +21,13 @@ public class Wolf : Animal
             collision.gameObject.GetComponent<Deercula>().TakeDamage();
         }
     }
+<<<<<<< Updated upstream
 }
+=======
+
+    protected override void RandomMovement()
+    {
+        agent.SetDestination(player.transform.position);
+    }
+}
+>>>>>>> Stashed changes
