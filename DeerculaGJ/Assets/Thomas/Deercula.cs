@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Deercula : MonoBehaviour
 {
@@ -80,7 +81,7 @@ public class Deercula : MonoBehaviour
         {
             if( collider.gameObject.tag == "Bitable")
             {
-                //collider.gameObject.GetComponent<Animal>().TakeDamage();
+                collider.gameObject.GetComponent<Animal>().TakeDamage();
             }
         }
 
@@ -108,6 +109,8 @@ public class Deercula : MonoBehaviour
         Debug.Log("Damage taken");
         if (health <= 0)
         {
+            GameManager.instance.IsGameOver = true;
+            GameManager.instance.IsGameRunning = false;
             Debug.Log("GameOver");
         }
     }
