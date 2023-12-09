@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BabyDeer : Animal
 {
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
+
     public override void TakeDamage()
     {
         base.TakeDamage();
@@ -14,8 +17,9 @@ public class BabyDeer : Animal
         }
     }
 
-
-    //Bewegung: Folgt Spieler
-    //Angreifbar: von anfang an?
-    //Greift an: nein
+    protected override void RandomMovement()
+    {
+        agent.SetDestination(player.transform.position);
+        spriteRenderer.flipX = !lookRight;
+    }
 }

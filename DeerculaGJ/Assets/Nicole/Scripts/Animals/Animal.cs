@@ -24,7 +24,7 @@ public class Animal : MonoBehaviour
     protected  Rigidbody2D rb;
     protected NavMeshAgent agent;
 
-    private Vector2 currentDestination;
+    protected Vector2 currentDestination;
 
     protected GameObject player;
 
@@ -33,7 +33,7 @@ public class Animal : MonoBehaviour
     [SerializeField] protected float sightRange;
     [SerializeField] protected List<Transform> flightPoints;
 
-    private void Start()
+    protected virtual void Start()
     {
         lastFramePosition= transform.position;
         rb = GetComponent<Rigidbody2D>();
@@ -47,7 +47,7 @@ public class Animal : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Deercula");
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         GetCurrentDirection();
     }
