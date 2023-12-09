@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Wolf : Animal
 {
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
+
     public override void TakeDamage()
     {
         base.TakeDamage();
@@ -25,6 +28,7 @@ public class Wolf : Animal
     protected override void RandomMovement()
     {
         agent.SetDestination(player.transform.position);
+        spriteRenderer.flipX = !lookRight;
     }
 }
 

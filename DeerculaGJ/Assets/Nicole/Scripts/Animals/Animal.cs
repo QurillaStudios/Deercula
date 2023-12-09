@@ -28,8 +28,12 @@ public class Animal : MonoBehaviour
 
     protected GameObject player;
 
+    private Vector2 lastFramePosition;
+    protected bool lookRight = true;
+
     private void Start()
     {
+        lastFramePosition= transform.position;
         rb = GetComponent<Rigidbody2D>();
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -39,6 +43,11 @@ public class Animal : MonoBehaviour
         startPosition = transform.position;
 
         player = GameObject.FindGameObjectWithTag("Deercula");
+    }
+
+    private void Update()
+    {
+        GetCurrentDirection();
     }
 
     private void FixedUpdate()
@@ -118,5 +127,19 @@ public class Animal : MonoBehaviour
             newSpeed = speed;
         }
         agent.speed= newSpeed;
+    }
+
+    private void GetCurrentDirection()
+    {
+        if(transform.position.x < lastFramePosition.x)
+        {
+            lookRight = false;
+        }
+        else if(transform.position.x > lastFramePosition.x)
+        {
+            lookRight= true;
+        }
+
+        lastFramePosition = transform.position;
     }
 }
