@@ -7,7 +7,7 @@ public class GameOverMenu : MonoBehaviour
 {
     public void NewGameButton()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Game");
     }
 
     public void MainMenuButton()

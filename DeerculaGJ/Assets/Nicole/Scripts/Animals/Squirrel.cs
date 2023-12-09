@@ -18,14 +18,6 @@ public class Squirrel : Animal
         }
     }
 
-    protected override void Update()
-    {
-        if(!isHide)
-        {
-            base.Update();
-        }
-    }
-
     protected override void FixedUpdate()
     {
         if (isFleeing)
@@ -88,6 +80,7 @@ public class Squirrel : Animal
             newSpeed = speed;
         }
         agent.speed = newSpeed;
+
         spriteRenderer.flipX = !lookRight;
     }
 
