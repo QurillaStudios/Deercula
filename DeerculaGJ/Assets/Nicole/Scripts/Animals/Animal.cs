@@ -6,21 +6,21 @@ using UnityEngine.UIElements;
 
 public class Animal : MonoBehaviour
 {
-    [SerializeField] private int health;
-    [SerializeField] private float speed;
-    [SerializeField] private float speedMultiplier; 
-    [SerializeField] private float movementRange;
-    [SerializeField] private bool isBitable = false;
-
+    [SerializeField] protected int health;
+    [SerializeField] protected float speed;
+    [SerializeField] protected float speedMultiplier; 
+    [SerializeField] protected float movementRange;
+    [SerializeField] protected bool isBitable = false;
     public bool IsBitable { get => isBitable; set => isBitable = value; }
-    private bool isFleeing;
 
-    private Vector2 startPosition;
-    private Vector2 moveDirection;
+    protected bool isFleeing;
 
-    [SerializeField] private float timer = 3f;
-    private float currentTimer;
-    private Rigidbody2D rb;
+    protected Vector2 startPosition;
+    protected  Vector2 moveDirection;
+
+    [SerializeField] protected float timer = 3f;
+    protected float currentTimer;
+    protected  Rigidbody2D rb;
 
     private void Start()
     {
@@ -39,6 +39,7 @@ public class Animal : MonoBehaviour
         if (isBitable)
         {
             health--;
+            Debug.Log("Health" + name +":" + health);
         }
         else
         {
@@ -49,14 +50,16 @@ public class Animal : MonoBehaviour
     IEnumerator Fleeing()
     {
         isFleeing = true;
+        Debug.Log("isFleeing:" + isFleeing);
         yield return new WaitForSeconds(5f);
         isFleeing = false;
+        Debug.Log("isFleeing:" + isFleeing);
     }
 
     protected virtual void Movement()
     {
         currentTimer -= Time.deltaTime;
-        Debug.Log("Timer" + currentTimer); 
+        //Debug.Log("Timer" + currentTimer); 
 
         if (currentTimer <= 0)
         {
@@ -67,7 +70,7 @@ public class Animal : MonoBehaviour
 
         if(Vector2.Distance(startPosition, transform.position) >= movementRange)
         {
-            moveDirection.Normalize();
+            Vector2.Reflect(moveDirection, transform.position );
         }
        
         float newSpeed = speed;
