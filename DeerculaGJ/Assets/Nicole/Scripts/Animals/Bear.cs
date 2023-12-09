@@ -22,4 +22,8 @@ public class Bear : Animal
             collision.gameObject.GetComponent<Deercula>().TakeDamage();
         }
     }
+
+    //Bewegung: bis zur Aktivierung nein, danach ja
+    //Angreifbar: nach Wölfen
+    //greift an: ja
 }

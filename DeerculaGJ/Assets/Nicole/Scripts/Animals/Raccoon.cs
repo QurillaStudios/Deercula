@@ -13,4 +13,9 @@ public class Raccoon : Animal
             Destroy(gameObject);
         }
     }
+
+    //Bewegung: normal, läuft langsam vor spieler weg
+    //angreifbar: ja, aber nur von hinten
+    //greift an: nein
+
 }

@@ -13,4 +13,8 @@ public class ButterFly : Animal
             Destroy(gameObject);
         }
     }
+
+    //Bewegung: langsam, kleine reichweite, läuft nicht weg
+    //angreifbar: ja
+    //greift an: nein
 }

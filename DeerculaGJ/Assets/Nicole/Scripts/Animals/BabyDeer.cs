@@ -13,4 +13,9 @@ public class BabyDeer : Animal
             Destroy(gameObject);
         }
     }
+
+
+    //Bewegung: Folgt Spieler
+    //Angreifbar: von anfang an?
+    //Greift an: nein
 }

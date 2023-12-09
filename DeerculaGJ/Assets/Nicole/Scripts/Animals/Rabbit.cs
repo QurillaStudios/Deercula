@@ -13,4 +13,8 @@ public class Rabbit : Animal
             Destroy(gameObject);
         }
     }
+
+    //Bewegung: normal, läuft im zickzack vor spieler weg
+    //angreifbar: nach eichhörnchen
+    //greift an: nein
 }

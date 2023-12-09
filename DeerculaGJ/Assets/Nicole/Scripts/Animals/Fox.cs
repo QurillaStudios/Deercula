@@ -21,4 +21,8 @@ public class Fox : Animal
             collision.gameObject.GetComponent<Deercula>().TakeDamage();
         }
     }
+
+    //Bewegung: normal, läuft vor spieler weg, 
+    //Angreifbar: ja nach waschbär
+    //greift an: ja, aber nur wenn spieler in reichweite ist
 }
