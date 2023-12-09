@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Mouse : Animal
 {
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
     public override void TakeDamage()
     {
         base.TakeDamage();
@@ -13,5 +15,10 @@ public class Mouse : Animal
             Destroy(gameObject);
         }
     }
-        
+
+    protected override void RandomMovement()
+    {
+        base.RandomMovement();
+        spriteRenderer.flipX = lookRight;
+    }
 }

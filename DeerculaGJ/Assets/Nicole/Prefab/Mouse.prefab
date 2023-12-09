@@ -107,6 +107,7 @@ MonoBehaviour:
   movementRange: 10
   isBitable: 0
   timer: 3
+  spriteRenderer: {fileID: 7644108577962872510}
 --- !u!50 &8509169643601497890
 Rigidbody2D:
   serializedVersion: 4
