@@ -1158,6 +1158,9 @@ MonoBehaviour:
     m_Bits: 0
   BiteIndicator: {fileID: 0}
   runSpeed: 7
+  walking: {fileID: 0}
+  attack: {fileID: 0}
+  takedamage: {fileID: 0}
 --- !u!58 &961273020
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1740,6 +1743,10 @@ PrefabInstance:
     - target: {fileID: 8550582741949382239, guid: eb49179322b45594db945da11cce10ed, type: 3}
       propertyPath: m_Name
       value: Deercula (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9149967273741268935, guid: eb49179322b45594db945da11cce10ed, type: 3}
+      propertyPath: m_SortingOrder
+      value: 42
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

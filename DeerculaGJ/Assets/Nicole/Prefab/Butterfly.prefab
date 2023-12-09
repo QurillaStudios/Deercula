@@ -250,6 +250,8 @@ MonoBehaviour:
   timer: 10
   sightRange: 0
   flightPoints: []
+  deadSound: {fileID: 0}
+  spriteRenderer: {fileID: 7398771773508509527}
 --- !u!50 &2072680819982854627
 Rigidbody2D:
   serializedVersion: 4

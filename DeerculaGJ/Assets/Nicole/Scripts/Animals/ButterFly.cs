@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ButterFly : Animal
 {
+    public SpriteRenderer spriteRenderer;
+
     public override void TakeDamage()
     {
         base.TakeDamage();
@@ -14,6 +16,11 @@ public class ButterFly : Animal
         }
     }
 
+    protected override void RandomMovement()
+    {
+        base.RandomMovement();
+        spriteRenderer.flipX = lookRight;
+    }
     //Bewegung: langsam, kleine reichweite, läuft nicht weg
     //angreifbar: ja
     //greift an: nein
