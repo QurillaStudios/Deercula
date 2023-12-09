@@ -1854,6 +1854,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Deercula (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8705363401470017861, guid: eb49179322b45594db945da11cce10ed, type: 3}
+      propertyPath: initialHealth
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1991,6 +1995,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2113825156
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2745608371431102755, guid: a6de9587f1add3d4da89296ace35913e, type: 3}
+      propertyPath: frequenz
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7027119232910249676, guid: a6de9587f1add3d4da89296ace35913e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7027119232910249676, guid: a6de9587f1add3d4da89296ace35913e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.6900002
+      objectReference: {fileID: 0}
+    - target: {fileID: 7027119232910249676, guid: a6de9587f1add3d4da89296ace35913e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7027119232910249676, guid: a6de9587f1add3d4da89296ace35913e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7027119232910249676, guid: a6de9587f1add3d4da89296ace35913e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7027119232910249676, guid: a6de9587f1add3d4da89296ace35913e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7027119232910249676, guid: a6de9587f1add3d4da89296ace35913e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7027119232910249676, guid: a6de9587f1add3d4da89296ace35913e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7027119232910249676, guid: a6de9587f1add3d4da89296ace35913e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7027119232910249676, guid: a6de9587f1add3d4da89296ace35913e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399806700741948279, guid: a6de9587f1add3d4da89296ace35913e, type: 3}
+      propertyPath: m_Name
+      value: Raccoon
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a6de9587f1add3d4da89296ace35913e, type: 3}
 --- !u!1001 &973456240781421939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2146,3 +2211,4 @@ SceneRoots:
   - {fileID: 746341378}
   - {fileID: 1147212712}
   - {fileID: 2093970261}
+  - {fileID: 2113825156}
