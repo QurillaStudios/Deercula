@@ -23,11 +23,12 @@ public class Bear : Animal
     private bool isPhaseC = false;
     private bool isPhaseD = false;
 
+    private bool standAttackPhaseWasTriggered = false;
+
     protected override void Start()
     {
         base.Start();
         currentFrequenz = frequenz;
-        pawPrefab.SetActive(false);
     }
 
     protected override void Update()
@@ -39,15 +40,25 @@ public class Bear : Animal
         }
         else if (isPhaseB)
         {
-
+            if(standAttackPhaseWasTriggered == false)
+            {
+                standAttackPhaseWasTriggered=true;
+                StartCoroutine(BearStandAttack());
+            }
+            
         }
         else if (isPhaseC)
         {
+            standAttackPhaseWasTriggered = false;
             BearWalkAttack();
         }
         else if (isPhaseD)
         {
-
+            if (standAttackPhaseWasTriggered == false)
+            {
+                standAttackPhaseWasTriggered = true;
+                StartCoroutine(BearStandAttack());
+            }
         }
 
 
@@ -82,6 +93,8 @@ public class Bear : Animal
         }
         if (isPhaseD)
         {
+            GameManager.instance.IsGameOver = false;
+            GameManager.instance.IsGameRunning= false;
             Destroy(gameObject);
         }
 
@@ -168,12 +181,16 @@ public class Bear : Animal
     {
         while (isPhaseB || isPhaseD)
         {
-            Instantiate(pawPrefab, transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(3f);
+            Vector2 playerPosition = player.transform.position;
+            GameObject goIndicator = Instantiate(pawPrefab, transform.position, Quaternion.identity);
+            goIndicator.GetComponent<Paw>().SetPawInactive(playerPosition);
+            yield return new WaitForSeconds(0.4f);
+            GameObject go = Instantiate(pawPrefab, transform.position, Quaternion.identity);
+            go.GetComponent<Paw>().SetPawActive(playerPosition);
+            yield return new WaitForSeconds(1.2f);
         }
     }
 
-    //private void 
 
     IEnumerator Attacking()
     {
