@@ -13,8 +13,5 @@ public class Mouse : Animal
             Destroy(gameObject);
         }
     }
-
-    //Bewegung: normal, Läuft vor spieler weg
-    //angreifbar: ja nach butterfly
-    //greift an: nein
+        
 }
