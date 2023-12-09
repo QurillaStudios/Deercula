@@ -6,6 +6,7 @@ public class Wolf : Animal
 {
     [SerializeField]
     private SpriteRenderer spriteRenderer;
+    [SerializeField] private AudioSource wolfAttackSound;
 
     public override void TakeDamage()
     {
@@ -22,6 +23,7 @@ public class Wolf : Animal
         if (collision.tag == "Deercula")
         {
             if(!isBitable)
+                wolfAttackSound.Play();
                 collision.gameObject.GetComponent<Deercula>().TakeDamage();
         }
     }

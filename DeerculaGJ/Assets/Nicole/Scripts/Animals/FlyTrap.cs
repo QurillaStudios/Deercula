@@ -6,6 +6,7 @@ public class FlyTrap : MonoBehaviour
 {
     [SerializeField] private Sprite sprite;
     private bool isAttackStarted;
+    [SerializeField] private AudioSource attack;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -24,14 +25,13 @@ public class FlyTrap : MonoBehaviour
     {
         transform.up = collision.gameObject.transform.position - transform.position;
         GetComponent<Animator>().SetTrigger("Snap");
+        if(!attack.isPlaying)
+        {
+            attack.Play();
+        }
         yield return new WaitForSeconds(1f);
-        //GetComponent<Animator>().enabled = false;
         GetComponent<SpriteRenderer>().sprite = sprite;
         transform.rotation = new Quaternion(0,0,0,0);
         isAttackStarted= false;
     }
-
-    //Bewegung: keine
-    //Angreifbar: nein
-    //greift an: ja
 }

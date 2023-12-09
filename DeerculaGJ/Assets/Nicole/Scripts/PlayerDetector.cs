@@ -5,13 +5,18 @@ using UnityEngine;
 public class PlayerDetector : MonoBehaviour
 {
     [SerializeField] private GameObject vignette;
+    [SerializeField] private AudioSource wolfNearSound;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Deercula")
         {
             if (!GetComponentInParent<Wolf>().IsBitable)
+            {
                 vignette.SetActive(true);
+                wolfNearSound.Play();
+            }    
+              
         }
     }
 

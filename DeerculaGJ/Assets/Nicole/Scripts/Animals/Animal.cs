@@ -32,6 +32,7 @@ public class Animal : MonoBehaviour
     protected bool lookRight = true;
     [SerializeField] protected float sightRange;
     [SerializeField] protected List<Transform> flightPoints;
+    [SerializeField] protected AudioSource deadSound;
 
     protected virtual void Start()
     {
@@ -62,6 +63,7 @@ public class Animal : MonoBehaviour
     {
         if (isBitable)
         {
+            deadSound.Play();
             health--;
             Debug.Log("Health" + name +":" + health);
         }

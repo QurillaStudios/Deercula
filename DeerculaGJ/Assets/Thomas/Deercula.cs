@@ -25,6 +25,11 @@ public class Deercula : MonoBehaviour
     public float runSpeed = 20.0f;
 
     private Vector3 lastMovementDirection;
+    [SerializeField] private AudioSource walking;
+    [SerializeField] private AudioSource attack;
+    [SerializeField] private AudioSource takedamage;
+
+
 
     void Start()
     {
@@ -45,11 +50,16 @@ public class Deercula : MonoBehaviour
 
         if(new Vector2(horizontal, vertical) != Vector2.zero)
         {
+            walking.Play();
             lastMovementDirection = new Vector2(horizontal, vertical);
             if( horizontal != 0f && vertical != 0f )
             {
                 lastMovementDirection = lastMovementDirection / 1.5f;
             }
+        }
+        else
+        {
+            walking.Stop();
         }
 
         Debug.Log("LastMovementDirection: " + lastMovementDirection);
@@ -81,6 +91,7 @@ public class Deercula : MonoBehaviour
         {
             if( collider.gameObject.tag == "Bitable")
             {
+                attack.Play();
                 collider.gameObject.GetComponent<Animal>().TakeDamage();
             }
         }
@@ -105,6 +116,7 @@ public class Deercula : MonoBehaviour
 
     public void TakeDamage()
     {
+        takedamage.Play();
         initialHealth -= 1;
         Debug.Log("Damage taken");
         if (health <= 0)

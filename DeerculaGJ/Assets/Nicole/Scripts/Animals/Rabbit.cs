@@ -40,6 +40,7 @@ public class Rabbit : Animal
     private IEnumerator Hide()
     {
         isHide = true;
+        GetComponent<Animator>().SetTrigger("TryToHide");
         yield return new WaitForSeconds(timeToHide);
         Debug.Log("Hide" + isHide);
         GetComponent<Collider2D>().enabled = false;
