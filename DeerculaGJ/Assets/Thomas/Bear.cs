@@ -10,6 +10,9 @@ public class Bear : Animal
     [SerializeField]
     private Animator animator;
 
+    [SerializeField]
+    private GameObject bloodPrefab;
+
     private bool isAttacking = false;
 
     [SerializeField] private float frequenz;
@@ -95,6 +98,8 @@ public class Bear : Animal
         {
             GameManager.instance.IsGameOver = false;
             GameManager.instance.IsGameRunning= false;
+            GameObject blood = Instantiate(bloodPrefab, transform.position, Quaternion.identity);
+            //blood.transform.localScale = new Vector3(10f, 10f, 10f);
             Destroy(gameObject);
         }
 

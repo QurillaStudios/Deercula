@@ -302,6 +302,7 @@ MonoBehaviour:
   flightPoints: []
   spriteRenderer: {fileID: 9176736117703968253}
   animator: {fileID: 6221400087374551756}
+  bloodPrefab: {fileID: 8103039882184706723, guid: ba226ba92ef06174eb96585b33adf2f1, type: 3}
   frequenz: 2
   attackRangeEffect: {fileID: 199497435614756}
   pawPrefab: {fileID: 1588728347162639542, guid: 4fda3801f942ad74cb8e9b222d258c78, type: 3}
@@ -365,7 +366,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -1.26}
-  m_Size: {x: 4.34, y: 2.65}
+  m_Size: {x: 3.99, y: 2.17}
   m_Direction: 1
 --- !u!195 &747486516114752000
 NavMeshAgent:
