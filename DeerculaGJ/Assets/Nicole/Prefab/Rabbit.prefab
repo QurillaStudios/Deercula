@@ -106,6 +106,12 @@ MonoBehaviour:
   movementRange: 5
   isBitable: 0
   timer: 50
+  sightRange: 0
+  flightPoints: []
+  isHide: 0
+  hidingTime: 0
+  timeToHide: 0
+  spriteRenderer: {fileID: 7644108577962872510}
 --- !u!58 &1625124710605925987
 CircleCollider2D:
   m_ObjectHideFlags: 0

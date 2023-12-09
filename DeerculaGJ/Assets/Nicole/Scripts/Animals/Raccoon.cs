@@ -7,8 +7,8 @@ public class Raccoon : Animal
 {
     [SerializeField] private float frequenz;
     private float currentFrequenz;
-    private bool isAttacking;
-    [SerializeField] private GameObject attackRangeEffect;
+    [SerializeField] private GameObject mine;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     protected override void Start()
     {
@@ -29,54 +29,31 @@ public class Raccoon : Animal
     protected override void Update()
     {
         base.Update();
-        RandomAttack();
+        RandomMine();
     }
 
-    private void RandomAttack()
+    private void RandomMine()
     {
-        if(!isAttacking)
+        currentFrequenz -= Time.deltaTime;
+
+        if(currentFrequenz <= 0)
         {
-            currentFrequenz -= Time.deltaTime;
+            Instantiate(mine, gameObject.transform.position, Quaternion.identity );
+            currentFrequenz = frequenz;
         }
 
-        if(currentFrequenz < 0 )
-        {
-            currentFrequenz = 0;
-            StartCoroutine(Attacking());
-        }
-    }
-
-    IEnumerator Attacking()
-    {
-        isAttacking = true;
-        attackRangeEffect.SetActive(true);
-        yield return new WaitForSeconds(2f);
-        attackRangeEffect.SetActive(false);
-        isAttacking= false;
-        currentFrequenz = frequenz;
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.tag == "Deercula")
-        {
-            if (isAttacking)
-                collision.gameObject.GetComponent<Deercula>().TakeDamage();
-        }
     }
 
     protected override void RandomMovement()
     {
         currentTimer -= Time.deltaTime;
        
-
         if (Vector2.Distance(currentDestination, transform.position) < 0.6f || currentTimer <= 0)
         {
             currentDestination = new Vector2(startPosition.x + Random.Range(-5f, 6f), startPosition.y + Random.Range(-5f, 6f));
             currentTimer = timer;
         }
         
-
         agent.SetDestination(currentDestination);
 
         float newSpeed = speed;
@@ -86,10 +63,7 @@ public class Raccoon : Animal
         }
 
         agent.speed = newSpeed;
-    }
-   
-    //Bewegung: normal, läuft langsam vor spieler weg
-    //angreifbar: ja, aber nur von hinten
-    //greift an: nein
 
+        spriteRenderer.flipX = lookRight;
+    }
 }

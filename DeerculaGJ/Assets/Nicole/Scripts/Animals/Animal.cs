@@ -52,7 +52,7 @@ public class Animal : MonoBehaviour
         GetCurrentDirection();
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         //Movement();
         RandomMovement();
