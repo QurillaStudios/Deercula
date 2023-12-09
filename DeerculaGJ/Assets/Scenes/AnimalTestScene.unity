@@ -310,6 +310,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8179855447360705396, guid: 44f32bb27ea07a246a16ddf79bccabb3, type: 3}
   m_PrefabInstance: {fileID: 95605068}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &225339413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 225339414}
+  m_Layer: 0
+  m_Name: FlightPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &225339414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225339413}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -20.15, y: 5.81, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &356215659
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,6 +877,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &746341377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 746341378}
+  m_Layer: 0
+  m_Name: FlightPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &746341378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746341377}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 17.94, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &791035429
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,6 +1416,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1147212711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1147212712}
+  m_Layer: 0
+  m_Name: FlightPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1147212712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147212711}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 8.97, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1162797922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1362,6 +1455,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2034484310153125600, guid: 7913f42c1b8168d44a86d54ea15e05f0, type: 3}
+      propertyPath: isBitable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034484310153125600, guid: 7913f42c1b8168d44a86d54ea15e05f0, type: 3}
+      propertyPath: sightRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034484310153125600, guid: 7913f42c1b8168d44a86d54ea15e05f0, type: 3}
+      propertyPath: flightPoints.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034484310153125600, guid: 7913f42c1b8168d44a86d54ea15e05f0, type: 3}
+      propertyPath: flightPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 225339414}
+    - target: {fileID: 2034484310153125600, guid: 7913f42c1b8168d44a86d54ea15e05f0, type: 3}
+      propertyPath: flightPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 746341378}
+    - target: {fileID: 2034484310153125600, guid: 7913f42c1b8168d44a86d54ea15e05f0, type: 3}
+      propertyPath: flightPoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 1147212712}
+    - target: {fileID: 2034484310153125600, guid: 7913f42c1b8168d44a86d54ea15e05f0, type: 3}
+      propertyPath: flightPoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 2093970261}
     - target: {fileID: 7027119232910249676, guid: 7913f42c1b8168d44a86d54ea15e05f0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.13
@@ -1839,6 +1960,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2093970260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2093970261}
+  m_Layer: 0
+  m_Name: FlightPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2093970261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093970260}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -9.56, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &973456240781421939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1990,3 +2142,7 @@ SceneRoots:
   - {fileID: 791035432}
   - {fileID: 9840597}
   - {fileID: 870819327}
+  - {fileID: 225339414}
+  - {fileID: 746341378}
+  - {fileID: 1147212712}
+  - {fileID: 2093970261}

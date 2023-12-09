@@ -30,6 +30,8 @@ public class Animal : MonoBehaviour
 
     private Vector2 lastFramePosition;
     protected bool lookRight = true;
+    [SerializeField] protected float sightRange;
+    [SerializeField] protected List<Transform> flightPoints;
 
     private void Start()
     {
@@ -63,20 +65,20 @@ public class Animal : MonoBehaviour
             health--;
             Debug.Log("Health" + name +":" + health);
         }
-        else
-        {
-        }
-            StartCoroutine(Fleeing());
+        //else
+        //{
+        //}
+        //    StartCoroutine(Fleeing());
     }
 
-    IEnumerator Fleeing()
-    {
-        isFleeing = true;
-        Debug.Log("isFleeing:" + isFleeing);
-        yield return new WaitForSeconds(5f);
-        isFleeing = false;
-        Debug.Log("isFleeing:" + isFleeing);
-    }
+    //IEnumerator Fleeing()
+    //{
+    //    isFleeing = true;
+    //    Debug.Log("isFleeing:" + isFleeing);
+    //    yield return new WaitForSeconds(5f);
+    //    isFleeing = false;
+    //    Debug.Log("isFleeing:" + isFleeing);
+    //}
 
     protected virtual void Movement()
     {
@@ -109,12 +111,24 @@ public class Animal : MonoBehaviour
     {
         currentTimer -= Time.deltaTime;
 
-        if (Vector2.Distance(currentDestination, transform.position) < 0.6f || currentTimer <= 0)
+        if(Vector2.Distance(player.transform.position,transform.position) < sightRange && !isFleeing)
         {
-            currentDestination = new Vector2(startPosition.x + Random.Range(-5f, 6f), startPosition.y + Random.Range(-5f, 6f));
-            currentTimer = timer;
+            currentDestination = flightPoints[Random.Range(0, flightPoints.Count)].position;
+            isFleeing = true;
         }
-        
+        else if(isFleeing && Vector2.Distance(currentDestination, transform.position) < 0.6f)
+        {
+            isFleeing = false;
+        }
+        else if(!isFleeing)
+        {
+            if (Vector2.Distance(currentDestination, transform.position) < 0.6f || currentTimer <= 0)
+            {
+                currentDestination = new Vector2(startPosition.x + Random.Range(-5f, 6f), startPosition.y + Random.Range(-5f, 6f));
+                currentTimer = timer;
+            }
+        }
+       
         agent.SetDestination(currentDestination);
 
         float newSpeed = speed;
