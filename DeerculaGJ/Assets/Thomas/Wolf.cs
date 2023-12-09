@@ -21,13 +21,21 @@ public class Wolf : Animal
     {
         if (collision.tag == "Deercula")
         {
-            collision.gameObject.GetComponent<Deercula>().TakeDamage();
+            if(!isBitable)
+                collision.gameObject.GetComponent<Deercula>().TakeDamage();
         }
     }
 
     protected override void RandomMovement()
     {
+        if(!isBitable)
+        {
         agent.SetDestination(player.transform.position);
+
+        }
+        else
+        { base.RandomMovement(); }
+
         spriteRenderer.flipX = !lookRight;
     }
 }
