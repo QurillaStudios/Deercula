@@ -959,6 +959,7 @@ Transform:
   - {fileID: 1804867474}
   - {fileID: 1241341967}
   - {fileID: 243358421}
+  - {fileID: 1975439886}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &216429974 stripped
@@ -1398,6 +1399,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3331414953505629920, guid: eb49179322b45594db945da11cce10ed, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3331414953505629920, guid: eb49179322b45594db945da11cce10ed, type: 3}
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
@@ -1441,6 +1446,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5581864101335349609, guid: eb49179322b45594db945da11cce10ed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8550582741949382239, guid: eb49179322b45594db945da11cce10ed, type: 3}
       propertyPath: m_Name
       value: Deercula
@@ -1460,6 +1469,10 @@ PrefabInstance:
     - target: {fileID: 8705363401470017861, guid: eb49179322b45594db945da11cce10ed, type: 3}
       propertyPath: initialHealth
       value: 2000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 9149967273741268935, guid: eb49179322b45594db945da11cce10ed, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9149967273741268935, guid: eb49179322b45594db945da11cce10ed, type: 3}
       propertyPath: m_SortingOrder
@@ -1639,6 +1652,10 @@ PrefabInstance:
     - target: {fileID: 7399806700741948279, guid: 9bfaf6118fa135141b7c06e6fafe4906, type: 3}
       propertyPath: m_Name
       value: Wolf
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399806700741948279, guid: 9bfaf6118fa135141b7c06e6fafe4906, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9073779427932111788, guid: 9bfaf6118fa135141b7c06e6fafe4906, type: 3}
       propertyPath: speed
@@ -6356,6 +6373,37 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5210350428462734394, guid: 44f32bb27ea07a246a16ddf79bccabb3, type: 3}
   m_PrefabInstance: {fileID: 1968543120}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1975439885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1975439886}
+  m_Layer: 0
+  m_Name: BabyDeer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1975439886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975439885}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 208359252}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2060089269
 GameObject:
   m_ObjectHideFlags: 0
@@ -6614,7 +6662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2237271133446244156, guid: a226d563aac4a8743ba4b5266e39e384, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3058327830944251936, guid: a226d563aac4a8743ba4b5266e39e384, type: 3}
       propertyPath: deadSound

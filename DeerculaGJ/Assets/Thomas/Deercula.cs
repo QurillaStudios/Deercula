@@ -29,13 +29,22 @@ public class Deercula : MonoBehaviour
     [SerializeField] private AudioSource attack;
     [SerializeField] private AudioSource takedamage;
 
+    private Animator deerAnimation;
+    private SpriteRenderer deerRenderer;
+    protected bool lookRight = true;
+    private Vector2 lastFramePosition;
 
+    private Vector3 bitIndicatorPosition;
 
     void Start()
     {
+        deerAnimation = GetComponent<Animator>();
+        deerRenderer = GetComponent<SpriteRenderer>();
         body = GetComponent<Rigidbody2D>();
         health = initialHealth;
         BiteIndicator.SetActive(false);
+        lastFramePosition= transform.position;
+        bitIndicatorPosition = BiteIndicator.transform.localPosition;
     }
 
     void Update()
@@ -51,6 +60,8 @@ public class Deercula : MonoBehaviour
         if(new Vector2(horizontal, vertical) != Vector2.zero)
         {
             walking.Play();
+            deerAnimation.SetBool("walking", true);
+            Debug.Log(deerAnimation.GetBool("walking"));
             lastMovementDirection = new Vector2(horizontal, vertical);
             if( horizontal != 0f && vertical != 0f )
             {
@@ -59,9 +70,26 @@ public class Deercula : MonoBehaviour
         }
         else
         {
+            deerAnimation.SetBool("walking", false);
+            Debug.Log(deerAnimation.GetBool("walking"));
             walking.Stop();
         }
 
+        if (transform.position.x < lastFramePosition.x)
+        {
+            lookRight = false;
+            bitIndicatorPosition.x = -1.99f;
+        }
+        else if (transform.position.x > lastFramePosition.x)
+        {
+            lookRight = true;
+            bitIndicatorPosition.x = 1.99f;
+        }
+
+        BiteIndicator.transform.localPosition = bitIndicatorPosition;
+
+        lastFramePosition = transform.position;
+        deerRenderer.flipX = !lookRight;
         //Debug.Log("LastMovementDirection: " + lastMovementDirection);
     }
 
@@ -76,7 +104,8 @@ public class Deercula : MonoBehaviour
     {
         if(canAttack)
         {
-        Debug.Log("Attack triggered");
+            deerAnimation.SetTrigger("attacking");
+            Debug.Log("Attack triggered");
             Attack();
             StartCoroutine(AttackCooldown());
         }
@@ -84,8 +113,9 @@ public class Deercula : MonoBehaviour
 
     private void Attack()
     {
-        Vector2 attackCirclePosition = transform.position + lastMovementDirection;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(attackCirclePosition, 1f, bitableLayerMask);
+           
+        Vector2 attackCirclePosition =BiteIndicator.transform.position + lastMovementDirection ;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(attackCirclePosition, 1.5f, bitableLayerMask);
 
         foreach(Collider2D collider in colliders)
         {
