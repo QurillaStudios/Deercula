@@ -6,25 +6,33 @@ public class PlayerDetector : MonoBehaviour
 {
     [SerializeField] private GameObject vignette;
     [SerializeField] private AudioSource wolfNearSound;
+    [SerializeField] private Transform player;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    bool isActiv;
+
+    private void Update()
     {
-        if (collision.tag == "Deercula")
+        if (Vector2.Distance(player.position, transform.position) < 10f)
         {
             if (!GetComponentInParent<Wolf>().IsBitable)
             {
-                vignette.SetActive(true);
-                wolfNearSound.Play();
-            }    
-              
+                if(!isActiv)
+                {
+                    isActiv = true;
+                    vignette.SetActive(true);
+                    wolfNearSound.Play();
+                }
+            }
+        }
+
+        if(Vector2.Distance(player.position, transform.position) > 10f)
+        {
+            isActiv = false;
+            vignette.SetActive(false);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Deercula")
-        {
-                vignette.SetActive(false);
-        }
-    }
+
+  
+    
 }

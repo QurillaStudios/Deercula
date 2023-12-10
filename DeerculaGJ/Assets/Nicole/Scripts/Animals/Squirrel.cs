@@ -22,13 +22,14 @@ public class Squirrel : Animal
     {
         if (isFleeing)
         {
-            Debug.Log("will sich verstecken");
+                spriteRenderer.flipX = !lookRight;
+            //Debug.Log("will sich verstecken");
             if (Vector2.Distance(currentDestination, transform.position) < 0.6f)
             {
-                Debug.Log("ist dabei sich zu verstecken");
+                //Debug.Log("ist dabei sich zu verstecken");
                 StartCoroutine(Hide());
                 isFleeing = false;
-                Debug.Log("Flucht2" + isFleeing);
+                //Debug.Log("Flucht2" + isFleeing);
             }
         }
         else if (!isHide)
@@ -40,7 +41,7 @@ public class Squirrel : Animal
     private IEnumerator Hide()
     {
         isHide = true;
-        Debug.Log("Hide" + isHide);
+        //Debug.Log("Hide" + isHide);
         GetComponent<Collider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(hidingTime);
@@ -57,7 +58,7 @@ public class Squirrel : Animal
         {
             currentDestination = flightPoints[Random.Range(0, flightPoints.Count)].position;
             isFleeing = true;
-            Debug.Log("Flucht" + isFleeing);
+            //Debug.Log("Flucht" + isFleeing);
         }
         else if (!isFleeing)
         {

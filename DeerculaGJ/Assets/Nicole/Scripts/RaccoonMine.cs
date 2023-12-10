@@ -16,6 +16,7 @@ public class RaccoonMine : MonoBehaviour
         if (collision.tag == "Deercula")
         {
             collision.gameObject.GetComponent<Deercula>().TakeDamage();
+            Destroy(gameObject);
         }
     }
 }

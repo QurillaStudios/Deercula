@@ -9,6 +9,7 @@ public class Fox : Animal
     private bool isAttacking;
     [SerializeField] private GameObject attackRangeEffect;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    bool hasHited;
 
     protected override void Start()
     {
@@ -56,19 +57,29 @@ public class Fox : Animal
         currentFrequenz = frequenz;
     }
 
+    IEnumerator Hit()
+    {
+        yield return new WaitForSeconds(1f);
+        hasHited= false;
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Deercula")
         {
-            if (isAttacking)
+            if (isAttacking && !hasHited)
+            {
+                hasHited = true;
                 collision.gameObject.GetComponent<Deercula>().TakeDamage();
+                StartCoroutine(Hit());
+            }   
         }
     }
 
     protected override void RandomMovement()
     {
         base.RandomMovement(); 
-        spriteRenderer.flipX = !lookRight;
+        spriteRenderer.flipX = lookRight;
     }
 
     private void OnDestroy()

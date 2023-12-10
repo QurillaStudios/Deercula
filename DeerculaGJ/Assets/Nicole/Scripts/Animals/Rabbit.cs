@@ -42,7 +42,7 @@ public class Rabbit : Animal
         isHide = true;
         GetComponent<Animator>().SetTrigger("TryToHide");
         yield return new WaitForSeconds(timeToHide);
-        Debug.Log("Hide" + isHide);
+        //Debug.Log("HasenHide" + isHide);
         GetComponent<Collider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(hidingTime);
@@ -64,7 +64,7 @@ public class Rabbit : Animal
             isFleeing = true;
             StartCoroutine(Hide());
 
-            Debug.Log("HaseFlucht" + isFleeing);
+            //Debug.Log("HaseFlucht" + isFleeing);
         }
         else if (!isFleeing)
         {

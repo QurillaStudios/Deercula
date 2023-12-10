@@ -23,8 +23,11 @@ public class Wolf : Animal
         if (collision.tag == "Deercula")
         {
             if(!isBitable)
+            {
+                Debug.Log("Wolfi greift an");
                 wolfAttackSound.Play();
                 collision.gameObject.GetComponent<Deercula>().TakeDamage();
+            }
         }
     }
 

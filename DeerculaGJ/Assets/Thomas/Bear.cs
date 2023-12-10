@@ -10,9 +10,6 @@ public class Bear : Animal
     [SerializeField]
     private Animator animator;
 
-    [SerializeField]
-    private GameObject bloodPrefab;
-
     private bool isAttacking = false;
 
     [SerializeField] private float frequenz;
@@ -32,11 +29,13 @@ public class Bear : Animal
     private bool standAttackPhaseWasTriggered = false;
 
     private bool isWaitingForEnd;
+    bool hasHited;
 
     protected override void Start()
     {
         base.Start();
         currentFrequenz = frequenz;
+        phaseChangeSound.Play();
     }
 
     protected override void Update()
@@ -110,17 +109,16 @@ public class Bear : Animal
                 StartCoroutine(GameEnd());
             }
         }
-
     }
 
     private IEnumerator GameEnd()
     {
         isWaitingForEnd = true;
         GameObject blood = Instantiate(bloodPrefab, transform.position, Quaternion.identity);
-        Destroy(gameObject);
         yield return new WaitForSeconds(0.75f);
         GameManager.instance.IsGameOver = false;
         GameManager.instance.IsGameRunning = false;
+        Destroy(gameObject);
         //blood.transform.localScale = new Vector3(10f, 10f, 10f);
     }
 
@@ -162,12 +160,24 @@ public class Bear : Animal
         //}
     }
 
+
+    IEnumerator Hit()
+    {
+        yield return new WaitForSeconds(1f);
+        hasHited = false;
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Deercula")
         {
-            if (isAttacking)
+            if (isAttacking && !hasHited)
+            {
+                hasHited = true;
                 collision.gameObject.GetComponent<Deercula>().TakeDamage();
+                StartCoroutine(Hit());
+            }
+               
         }
     }
 

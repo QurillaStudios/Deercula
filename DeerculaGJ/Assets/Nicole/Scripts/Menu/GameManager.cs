@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioSource gameWin;
     [SerializeField] private AudioSource gameLose;
     [SerializeField] private AudioSource unlockSound;
+    [SerializeField] private AudioSource battleSound;
 
 
     [SerializeField] private AudioSource[] gameBackground;
@@ -123,6 +124,18 @@ public class GameManager : MonoBehaviour
         UnlockAnimal(raccoons, foxes, ref isFoxesUnLocked);
         UnlockAnimal(foxes, wolves, ref isWolvesUnLocked);
         UnlockAnimal(wolves, bears, ref isBearsUnLocked);
+
+        if (isBearsUnLocked && !battleSound.isPlaying)
+        {
+            gameBackground[0].Stop();
+            battleSound.Play();
+            foreach(var bear in bears)
+            {
+                bear.gameObject.SetActive(true);
+            }
+
+
+        }
     }
 
     private void UnlockAnimal(IEnumerable<Animal> currentAnimal, IEnumerable<Animal> nextAnimal, ref bool isUnlocked)

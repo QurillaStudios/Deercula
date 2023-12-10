@@ -62,7 +62,7 @@ public class Deercula : MonoBehaviour
             walking.Stop();
         }
 
-        Debug.Log("LastMovementDirection: " + lastMovementDirection);
+        //Debug.Log("LastMovementDirection: " + lastMovementDirection);
     }
 
     private void FixedUpdate()
@@ -117,7 +117,7 @@ public class Deercula : MonoBehaviour
     public void TakeDamage()
     {
         takedamage.Play();
-        initialHealth -= 1;
+        health -= 1;
         Debug.Log("Damage taken");
         if (health <= 0)
         {
