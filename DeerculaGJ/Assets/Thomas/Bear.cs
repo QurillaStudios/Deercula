@@ -21,12 +21,17 @@ public class Bear : Animal
 
     [SerializeField] private GameObject pawPrefab;
 
+    [SerializeField] private AudioSource phaseChangeSound;
+    [SerializeField] private AudioSource attackSound;
+
     private bool isPhaseA = true;
     private bool isPhaseB = false;
     private bool isPhaseC = false;
     private bool isPhaseD = false;
 
     private bool standAttackPhaseWasTriggered = false;
+
+    private bool isWaitingForEnd;
 
     protected override void Start()
     {
@@ -81,28 +86,42 @@ public class Bear : Animal
         //    GameManager.instance.IsGameRunning = false;
         //    Destroy(gameObject);
         //}
+        deadSound.Play();
 
         if (isPhaseA)
         {
             StartCoroutine(StartPhaseB());
+            phaseChangeSound.Play();
         }
         if (isPhaseB)
         {
             StartCoroutine(StartPhaseC());
+            phaseChangeSound.Play();
         }
         if (isPhaseC)
         {
             StartCoroutine(StartPhaseD());
+            phaseChangeSound.Play();
         }
         if (isPhaseD)
         {
-            GameManager.instance.IsGameOver = false;
-            GameManager.instance.IsGameRunning= false;
-            GameObject blood = Instantiate(bloodPrefab, transform.position, Quaternion.identity);
-            //blood.transform.localScale = new Vector3(10f, 10f, 10f);
-            Destroy(gameObject);
+            if(!isWaitingForEnd)
+            {
+                StartCoroutine(GameEnd());
+            }
         }
 
+    }
+
+    private IEnumerator GameEnd()
+    {
+        isWaitingForEnd = true;
+        GameObject blood = Instantiate(bloodPrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+        yield return new WaitForSeconds(0.75f);
+        GameManager.instance.IsGameOver = false;
+        GameManager.instance.IsGameRunning = false;
+        //blood.transform.localScale = new Vector3(10f, 10f, 10f);
     }
 
     private IEnumerator StartPhaseB()
@@ -191,6 +210,7 @@ public class Bear : Animal
             goIndicator.GetComponent<Paw>().SetPawInactive(playerPosition);
             yield return new WaitForSeconds(0.4f);
             GameObject go = Instantiate(pawPrefab, transform.position, Quaternion.identity);
+            attackSound.Play();
             go.GetComponent<Paw>().SetPawActive(playerPosition);
             yield return new WaitForSeconds(1.2f);
         }
@@ -200,6 +220,7 @@ public class Bear : Animal
     IEnumerator Attacking()
     {
         isAttacking = true;
+        attackSound.Play();
         attackRangeEffect.SetActive(true);
         yield return new WaitForSeconds(2f);
         attackRangeEffect.SetActive(false);
