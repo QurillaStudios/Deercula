@@ -194,6 +194,8 @@ MonoBehaviour:
   timer: 3
   sightRange: 3
   flightPoints: []
+  deadSound: {fileID: 0}
+  bloodPrefab: {fileID: 8103039882184706723, guid: ba226ba92ef06174eb96585b33adf2f1, type: 3}
   frequenz: 10
   attackRangeEffect: {fileID: 2004447005643381203}
   spriteRenderer: {fileID: 7644108577962872510}

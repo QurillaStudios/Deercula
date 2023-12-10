@@ -70,4 +70,9 @@ public class Fox : Animal
         base.RandomMovement(); 
         spriteRenderer.flipX = !lookRight;
     }
+
+    private void OnDestroy()
+    {
+        Instantiate(bloodPrefab, transform.position, Quaternion.identity);
+    }
 }

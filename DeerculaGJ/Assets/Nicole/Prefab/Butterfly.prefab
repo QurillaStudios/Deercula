@@ -251,6 +251,7 @@ MonoBehaviour:
   sightRange: 0
   flightPoints: []
   deadSound: {fileID: 0}
+  bloodPrefab: {fileID: 8103039882184706723, guid: ba226ba92ef06174eb96585b33adf2f1, type: 3}
   spriteRenderer: {fileID: 7398771773508509527}
 --- !u!50 &2072680819982854627
 Rigidbody2D:

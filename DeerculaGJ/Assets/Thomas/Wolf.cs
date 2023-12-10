@@ -40,5 +40,10 @@ public class Wolf : Animal
 
         spriteRenderer.flipX = !lookRight;
     }
+
+    private void OnDestroy()
+    {
+        Instantiate(bloodPrefab, transform.position, Quaternion.identity);
+    }
 }
 

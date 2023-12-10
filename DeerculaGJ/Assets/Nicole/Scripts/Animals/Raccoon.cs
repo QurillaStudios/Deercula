@@ -66,4 +66,9 @@ public class Raccoon : Animal
 
         spriteRenderer.flipX = lookRight;
     }
+
+    private void OnDestroy()
+    {
+        Instantiate(bloodPrefab, transform.position, Quaternion.identity);
+    }
 }

@@ -88,4 +88,9 @@ public class Rabbit : Animal
         agent.speed = newSpeed;
         spriteRenderer.flipX = !lookRight;
     }
+
+    private void OnDestroy()
+    {
+        Instantiate(bloodPrefab, transform.position, Quaternion.identity);
+    }
 }

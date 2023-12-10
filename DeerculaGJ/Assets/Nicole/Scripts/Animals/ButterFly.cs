@@ -21,7 +21,9 @@ public class ButterFly : Animal
         base.RandomMovement();
         spriteRenderer.flipX = lookRight;
     }
-    //Bewegung: langsam, kleine reichweite, läuft nicht weg
-    //angreifbar: ja
-    //greift an: nein
+
+    private void OnDestroy()
+    {
+        Instantiate(bloodPrefab, transform.position, Quaternion.identity);
+    }
 }

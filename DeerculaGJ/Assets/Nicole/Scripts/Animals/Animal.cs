@@ -34,6 +34,8 @@ public class Animal : MonoBehaviour
     [SerializeField] protected List<Transform> flightPoints;
     [SerializeField] protected AudioSource deadSound;
 
+    [SerializeField] protected GameObject bloodPrefab;
+
     protected virtual void Start()
     {
         lastFramePosition= transform.position;

@@ -109,6 +109,8 @@ MonoBehaviour:
   timer: 3
   sightRange: 5
   flightPoints: []
+  deadSound: {fileID: 0}
+  bloodPrefab: {fileID: 8103039882184706723, guid: ba226ba92ef06174eb96585b33adf2f1, type: 3}
   isHide: 0
   hidingTime: 10
   spriteRenderer: {fileID: 7644108577962872510}
