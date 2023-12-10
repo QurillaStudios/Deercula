@@ -25,9 +25,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioSource unlockSound;
     [SerializeField] private AudioSource battleSound;
 
-
+    [SerializeField] private TMP_Text lifesText;
     [SerializeField] private AudioSource[] gameBackground;
 
+    [SerializeField] private Deercula deercula;
 
     #region lists
     [SerializeField] private List<ButterFly> butterFlies;
@@ -155,9 +156,9 @@ public class GameManager : MonoBehaviour
             {
                 bear.gameObject.SetActive(true);
             }
-
-
         }
+
+        lifesText.text = deercula.health.ToString();
     }
 
     private void UnlockAnimal(IEnumerable<Animal> currentAnimal, IEnumerable<Animal> nextAnimal, ref bool isUnlocked)

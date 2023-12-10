@@ -16,7 +16,7 @@ public class Deercula : MonoBehaviour
     private float currentAttackCoolDownTimer = 0f;
     private bool canAttack = true;
 
-    private int health;
+    public int health;
     Rigidbody2D body;
 
     float horizontal;
