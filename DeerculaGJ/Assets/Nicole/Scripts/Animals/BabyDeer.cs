@@ -7,11 +7,13 @@ public class BabyDeer : Animal
     [SerializeField]
     private SpriteRenderer spriteRenderer;
 
+
     public override void TakeDamage()
     {
         base.TakeDamage();
         if (health <= 0)
         {
+            deadSound.Play();
             GameManager.instance.BabyDeers.Remove(this);
             Destroy(gameObject);
         }
@@ -19,7 +21,18 @@ public class BabyDeer : Animal
 
     protected override void RandomMovement()
     {
-        agent.SetDestination(player.transform.position);
+        if(Vector2.Distance(player.transform.position, transform.position) > 5f)
+        {
+            agent.isStopped = false;
+            GetComponent<Animator>().SetBool("walking", true);
+            agent.SetDestination(player.transform.position);
+
+        }
+        else
+        {
+            GetComponent<Animator>().SetBool("walking", false);
+            agent.isStopped = true;
+        }
         spriteRenderer.flipX = !lookRight;
     }
 }

@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour 
@@ -62,6 +64,25 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<Bear> bears;
     public List<Bear> Bears { get => bears; set => bears = value; }
     private bool isBearsUnLocked;
+
+    [SerializeField] private GameObject butterfly;
+    [SerializeField] private GameObject mouse;
+    [SerializeField] private GameObject squrille;
+    [SerializeField] private GameObject rabbit;
+    [SerializeField] private GameObject raccoon;
+    [SerializeField] private GameObject fox;
+    [SerializeField] private GameObject wolf;
+    //[SerializeField] private GameObject bear;
+
+    [SerializeField] private TMP_Text butterflyText;
+    [SerializeField] private TMP_Text mouseText;
+    [SerializeField] private TMP_Text squirrelText;
+    [SerializeField] private TMP_Text rabbitText;
+    [SerializeField] private TMP_Text raccoonText;
+    [SerializeField] private TMP_Text foxText;
+    [SerializeField] private TMP_Text wolfText;
+    //[SerializeField] private TMP_Text bearText;
+
     #endregion
 
     private void Start()
@@ -82,6 +103,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        UpdateUnLockAnimals();
         if (Input.GetKeyDown(KeyCode.Escape) && isGameRunning)
         {
             pauseMenu.SetActive(true);
@@ -157,4 +179,78 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-}
+
+    private void UpdateUnLockAnimals()
+    {
+        butterflyText.text = ButterFlies.Count.ToString();
+        if(ButterFlies.Count == 0)
+        {
+            butterfly.SetActive(false);
+        }
+
+        if(isMouseUnLocked)
+        {
+            mouse.GetComponent<RawImage>().color = Color.red;
+        }
+        mouseText.text = Mouses.Count.ToString();
+        if (Mouses.Count == 0)
+        {
+            mouse.SetActive(false);
+        }
+
+        if (isSquirrelsUnLocked)
+        {
+            squrille.GetComponent<RawImage>().color = Color.red;
+        }
+        squirrelText.text= Squirrels.Count.ToString();
+        if (Squirrels.Count == 0)
+        {
+            squrille.SetActive(false);
+        }
+
+        if (isRabbitsUnLocked)
+        {
+            rabbit.GetComponent<RawImage>().color = Color.red;
+        }
+        rabbitText.text = Rabbits.Count.ToString();
+        if (Rabbits.Count == 0)
+        {
+            rabbit.SetActive(false);
+        }
+
+        if (isRaccoonsUnLocked)
+        {
+            raccoon.GetComponent<RawImage>().color = Color.red;
+        }
+        raccoonText.text = Raccoons.Count.ToString();
+        if (Raccoons.Count == 0)
+        {
+            raccoon.SetActive(false);
+        }
+
+        if (isFoxesUnLocked)
+        {
+           fox.GetComponent<RawImage>().color = Color.red;
+        }
+        foxText.text = Foxes.Count.ToString();
+        if (Foxes.Count == 0)
+        {
+            fox.SetActive(false);
+        }
+
+        if (isWolvesUnLocked)
+        {
+            wolf.GetComponent<RawImage>().color = Color.red;
+        }
+        wolfText.text = Wolves.Count.ToString();
+        if (Wolves.Count == 0)
+        {
+            wolf.SetActive(false);
+        }
+
+    }  
+}      
+       
+       
+       
+       
